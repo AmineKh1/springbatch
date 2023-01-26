@@ -1,6 +1,6 @@
-package com.example.demo.config;
+package com.example.springbatch.config;
 
-import com.example.demo.entity.Customer;
+import com.example.springbatch.entity.Customer;
 import org.springframework.batch.item.ItemProcessor;
 
 public class CustomerProcessor implements ItemProcessor<Customer, Customer> {

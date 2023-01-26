@@ -1,7 +1,7 @@
-package com.example.demo.config;
+package com.example.springbatch.config;
 
-import com.example.demo.entity.Customer;
-import com.example.demo.repository.CustomerRepository;
+import com.example.springbatch.entity.Customer;
+import com.example.springbatch.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
