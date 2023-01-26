@@ -19,7 +19,7 @@ public class Customer {
     private String email;
 }
   ```
-2. Open the src/main/resources/application.properties file and configure the MySQL connection details, update the server port to 8090 in the same file and disable spring batch from running at startup.
+2. Open the src/main/resources/application.properties file and configure the MySQL connection details, update the server port to 8090 in the same file, tells Spring Batch to always initialize the database schema when the application starts and disable spring batch from running at startup.
  ```properties
  
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
