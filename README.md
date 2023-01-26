@@ -6,7 +6,7 @@ This project demonstrates how to use Spring Batch to read data from a CSV file a
 - MySQL Server
 - Maven
 ## Setup
-1. Create a new MySQL database and table to store the data. The table should have the same structure as the CSV file.
+1. Create a new MySQL database the table will be created by default.
  ```java
 @Entity
 @Table(name="CUSTOMER")
