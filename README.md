@@ -54,7 +54,29 @@ spring.batch.job.enabled=false
  ```bash
 mvn clean spring-boot:run
  ```
-5. Verify that the data has been successfully written to the MySQL table by accessing the databasse.
+5. Send POST request at this path "localhost:8090/jobs/importCustomers" to start the job and import data from CSV to database.
+ ```java
+@RestController
+@RequestMapping("/jobs")
+public class JobController {
+    @Autowired
+    private JobLauncher jobLauncher;
+    @Autowired
+    private Job job;
+    @PostMapping("/importCustomers")
+    public void importCsvToDbJob() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
+        JobParameters jobParameters=new JobParametersBuilder()
+                .addLong("startAt", System.currentTimeMillis()).toJobParameters();
+        try {
+            jobLauncher.run(job, jobParameters);
+        } catch (JobExecutionAlreadyRunningException | JobRestartException | JobInstanceAlreadyCompleteException | JobParametersInvalidException e){
+            e.printStackTrace();
+        }
+    }
+
+}
+  ```
+7. Verify that the data has been successfully written to the MySQL table by accessing the databasse.
 ## Additional Resources
 - Spring Batch documentation
 - Spring Boot documentation
