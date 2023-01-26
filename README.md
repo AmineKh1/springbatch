@@ -7,17 +7,54 @@ This project demonstrates how to use Spring Batch to read data from a CSV file a
 - Maven
 ## Setup
 1. Create a new MySQL database and table to store the data. The table should have the same structure as the CSV file.
+ ```java
+@Entity
+@Table(name="CUSTOMER")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Customer {
+    @Id
+    private int id;
+    private String email;
+}
+  ```
+2. Open the src/main/resources/application.properties file and configure the MySQL connection details, update the server port to 8090 in the same file and disable spring batch from running at startup.
+ ```properties
+ 
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url = jdbc:mysql://localhost:3306/springbatch
+spring.datasource.username = root
+spring.datasource.password =
+spring.jpa.show-sql = true
+spring.jpa.hibernate.ddl-auto = create-drop
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5Dialect
+server.port=8090
+spring.batch.jdbc.initialize-schema=ALWAYS
 
-2. Open the src/main/resources/application.properties file and configure the MySQL connection details. Also, update the server port to 8090 in the same file.
-
+disabled job run at startup
+spring.batch.job.enabled=false
+ ```
 3. Open the src/main/java/com/example/springbatch/config/BatchConfig.java file and configure the CSV file location, field names and data types.
+ ```java
+     @Bean
+     public FlatFileItemReader<Customer> reader() {
+        FlatFileItemReader<Customer> itemReader=new FlatFileItemReader<>();
 
+        itemReader.setResource(new FileSystemResource("src/main/resources/customers.csv"));
+        itemReader.setName("csvReader");
+        itemReader.setLinesToSkip(1);
+        itemReader.setLineMapper(lineMapper());
+
+        return itemReader;
+    }
+  ```
 4. Run the following command to start the batch process:
 
  ```bash
 mvn clean spring-boot:run
  ```
-5. Verify that the data has been successfully written to the MySQL table by accessing the application on http://localhost:8090/
+5. Verify that the data has been successfully written to the MySQL table by accessing the databasse.
 ## Additional Resources
 - Spring Batch documentation
 - Spring Boot documentation
