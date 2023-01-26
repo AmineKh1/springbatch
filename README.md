@@ -10,10 +10,9 @@ This project demonstrates how to use Spring Batch to read data from a CSV file a
 
 2. Open the src/main/resources/application.properties file and configure the MySQL connection details. Also, update the server port to 8090 in the same file.
 
-3. Open the src/main/java/com/example/csvtomysql/config/BatchConfig.java file and configure the CSV file location, field names and data types.
+3. Open the src/main/java/com/example/demo/config/BatchConfig.java file and configure the CSV file location, field names and data types.
 
 4. Run the following command to start the batch process:
-
 
  ```bash
 mvn clean spring-boot:run
