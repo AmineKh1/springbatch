@@ -1,5 +1,5 @@
 # Spring Batch CSV to MySQL Project
-This project demonstrates how to use Spring Batch to read data from a CSV file and write it into a MySQL database using Java 17 and Spring Boot version 3.0.2. The project is built using Maven and the server is running on port 8090.
+This project demonstrates how to use Spring Batch to read data from a CSV files and write it into database tables using Java 17 and Spring Boot version 3.0.2. The project is built using Maven and the server is running on port 8090.
 
 ## Prerequisites
 - Java 17
